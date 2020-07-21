@@ -13,8 +13,8 @@ DISCORD_WEBHOOKS = { # Dictionary of webhooks to send requests to
     "playing": "" # Playing webhook
 }
 TIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ" # Time format for tracker time on Discord
-VISITS_COUNTDOWN = 1000000 # Multiplication of visits to countdown to
-MEMBERS_COUNTDOWN = 10000 # Multiplication of members to countdown to
+VISITS_COUNTDOWN = 1000000 # Milestone frequency (count down to every x number of visits)
+MEMBERS_COUNTDOWN = 10000 # Milestone frequency (count down to every x number of members)
 
 # Other
 INTERVAL = 60 # Number of seconds between tracking requests
