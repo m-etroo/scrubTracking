@@ -10,6 +10,9 @@ from math import ceil
 
 # Define main tracking function
 def track_members():
+    # Milestone mention insertion
+    mention = "" # No mention triggered YET
+
     # Get data from Roblox API
     roblox_request = requests.get(config.MEMBERS_REQUEST_URL)
 
