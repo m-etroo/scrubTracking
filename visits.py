@@ -10,6 +10,9 @@ from math import ceil
 
 # Define main tracking function
 def track_visits():
+    # Milestone mention insertion
+    mention = "" # No mention triggered YET
+
     # Get data from Roblox API
     roblox_request = requests.get(config.GAME_REQUEST_URL)
 
@@ -40,10 +43,16 @@ def track_visits():
         # Get number to countdown to
         countdown_goal = ceil(visits/config.VISITS_COUNTDOWN) * config.VISITS_COUNTDOWN
 
+        # Determine if this should trigger a milestone mention
+        for milestone in config.VISITS_MILESTONES:
+            if visits >= int(milestone):
+                mention = f"\n<@&{config.MENTION_ROLE_ID}>"
+                config.remove_milestone("visits", milestone)
+
         # Format request data to Discord
         l = prev.since_last["visits"]
         discord_request_json = {
-            "content": f"───────────────────\n**{f'{visits:,}'}** game visits | **{f'{countdown_goal - visits:,}'}** visits remaining | **{l}** visits since last count | `{time_string}`",
+            "content": f"───────────────────\n**{f'{visits:,}'}** game visits | **{f'{countdown_goal - visits:,}'}** visits remaining | **{l}** visits since last count | `{time_string}`{mention}",
             "username": f"{f'{countdown_goal:,}'} Visits Countdown"
         }
 
