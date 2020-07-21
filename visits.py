@@ -38,7 +38,7 @@ def track_visits():
             return
 
         # Get number to countdown to
-        countdown_goal = ceil(visits/config.MEMBERS_COUNTDOWN) * config.MEMBERS_COUNTDOWN
+        countdown_goal = ceil(visits/config.VISITS_COUNTDOWN) * config.VISITS_COUNTDOWN
 
         # Format request data to Discord
         l = prev.since_last["visits"]
