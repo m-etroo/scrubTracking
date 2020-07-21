@@ -9,7 +9,7 @@ A tool created to track a Roblox game &amp; group, sending stats about those to 
 * Then, skip to line 6 and edit `GROUP_ID` if you want a different group. Again, default is SCR.
 * Skip over the next few lines to line 11. Here, you will enter your Discord webhook URLs. You will need to generate 3 Discord webhooks, one each for visits, members, and players. Copy and paste them between the quotes in the corresponding spots.
 * Go to line 15 and decide if you want to change the time format. By default, ISO 8601 is used (YYYY-MM-DDTHH:MM:SSZ), but you can change this. (See this: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes)
-* The next two lines, 16 and 17, are for the countdown. For game visits and group members, the webhook will countdown to a milestone, and you can specify this as an integer number here.
+* The next two lines, 16 and 17, are for the countdown. For game visits and group members, this number is the frequency of the milestones that will be counted down to. So, for example, if the frequency is 1,000,000, the tracker will countdown to each subsequent million (1 million, 2 million, etc.).
 * Finally, line 20 is the interval, or how often you would like the webhook to display stats. 60 seconds is the default.
 
 ## Running the trackers
