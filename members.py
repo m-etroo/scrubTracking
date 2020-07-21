@@ -36,10 +36,13 @@ def track_members():
             logging.error('Roblox API data does not include members count, likely an API or request issue - members will not be tracked')
             return
 
+        # Getting number to countdown towards
+        countdownGoal = members - members % config.MEMBERS_COUNTDOWN + config.MEMBERS_COUNTDOWN
+        
         # Format request data to Discord
         l = prev.since_last["members"]
         discord_request_json = {
-            "content": f"───────────────────\n**{f'{members:,}'}** group members | **{f'{config.MEMBERS_COUNTDOWN - members:,}'}** members remaining | **{l}** members since last count | `{time_string}`"
+            "content": f"───────────────────\n**{f'{members:,}'}** group members | **{f'{countdownGoal - members:,}'}** members remaining | **{l}** members since last count | `{time_string}`"
         }
 
         # Send request to Discord webhook
