@@ -23,6 +23,11 @@ MEMBERS_COUNTDOWN = 10000 # Milestone frequency (count down to every x number of
 # Other
 INTERVAL = 60 # Number of seconds between tracking requests
 
+
+
+
+
+
 # ==================================================================================================
 # Do not modify below here
 # ==================================================================================================
