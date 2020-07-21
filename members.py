@@ -46,7 +46,7 @@ def track_members():
         # Determine if this should trigger a milestone mention
         for milestone in config.MEMBERS_MILESTONES:
             if members >= int(milestone):
-                mention = "\n<@&{config.MENTION_ROLE_ID}"
+                mention = f"\n<@&{config.MENTION_ROLE_ID}>"
                 config.remove_milestone("members", milestone)
         
         # Format request data to Discord

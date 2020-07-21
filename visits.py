@@ -46,7 +46,7 @@ def track_visits():
         # Determine if this should trigger a milestone mention
         for milestone in config.VISITS_MILESTONES:
             if visits >= int(milestone):
-                mention = "\n<@&{config.MENTION_ROLE_ID}"
+                mention = f"\n<@&{config.MENTION_ROLE_ID}>"
                 config.remove_milestone("visits", milestone)
 
         # Format request data to Discord
