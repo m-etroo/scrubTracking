@@ -39,11 +39,17 @@ def track_members():
 
         # Get number to countdown to
         countdown_goal = ceil(members/config.MEMBERS_COUNTDOWN) * config.MEMBERS_COUNTDOWN
+
+        # Determine if this should trigger a milestone mention
+        for milestone in config.MEMBERS_MILESTONES:
+            if members >= int(milestone):
+                mention = "\n<@&{config.MENTION_ROLE_ID}"
+                config.remove_milestone("members", milestone)
         
         # Format request data to Discord
         l = prev.since_last["members"]
         discord_request_json = {
-            "content": f"───────────────────\n**{f'{members:,}'}** group members | **{f'{countdown_goal - members:,}'}** members remaining | **{l}** members since last count | `{time_string}`",
+            "content": f"───────────────────\n**{f'{members:,}'}** group members | **{f'{countdown_goal - members:,}'}** members remaining | **{l}** members since last count | `{time_string}`{mention}",
             "username": f"{f'{countdown_goal:,}'} Members Countdown"
         }
 
