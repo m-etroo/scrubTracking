@@ -44,7 +44,7 @@ def track_members():
         l = prev.since_last["members"]
         discord_request_json = {
             "content": f"───────────────────\n**{f'{members:,}'}** group members | **{f'{countdown_goal - members:,}'}** members remaining | **{l}** members since last count | `{time_string}`",
-            "username": f"{f'{countdown_goal}'} Members Countdown"
+            "username": f"{f'{countdown_goal:,}'} Members Countdown"
         }
 
         # Send request to Discord webhook

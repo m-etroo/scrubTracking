@@ -44,7 +44,7 @@ def track_visits():
         l = prev.since_last["visits"]
         discord_request_json = {
             "content": f"───────────────────\n**{f'{visits:,}'}** game visits | **{f'{countdown_goal - visits:,}'}** visits remaining | **{l}** visits since last count | `{time_string}`",
-            "username": f"{f'{countdown_goal}'} Visits Countdown"
+            "username": f"{f'{countdown_goal:,}'} Visits Countdown"
         }
 
         # Send request to Discord webhook
