@@ -36,10 +36,13 @@ def track_visits():
             logging.error('Roblox API data does not include visits count, likely an API or request issue - visits will not be tracked')
             return
 
+        # Getting countdown to visits
+        countdownTo = visits - visits % config.VISITS_COUNTDOWN + config.VISITS_COUNTDOWN
+
         # Format request data to Discord
         l = prev.since_last["visits"]
         discord_request_json = {
-            "content": f"───────────────────\n**{f'{visits:,}'}** game visits | **{f'{config.VISITS_COUNTDOWN - visits:,}'}** visits remaining | **{l}** visits since last count | `{time_string}`"
+            "content": f"───────────────────\n**{f'{visits:,}'}** game visits | **{f'{countdownTo - visits:,}'}** visits remaining | **{l}** visits since last count | `{time_string}`"
         }
 
         # Send request to Discord webhook
