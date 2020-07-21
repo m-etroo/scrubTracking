@@ -17,7 +17,7 @@ DISCORD_WEBHOOKS = { # Dictionary of webhooks to send requests to
     "playing": env("PLAYING_WEBHOOK") # Edit from .env file
 }
 TIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ" # Time format for tracker time on Discord
-VISITS_COUNTDOWN = 14000000 # Number of visits to countdown to
+VISITS_COUNTDOWN = 15000000 # Number of visits to countdown to
 MEMBERS_COUNTDOWN = 80000 # Number of members to countdown to
 
 # Other
