@@ -3,7 +3,7 @@ import logging
 
 def parse(request_type, data):
     try:
-        if request_type == "visits":
+        if request_type == "visits" or request_type == "motivation":
             number = data["data"][0]["visits"]
         elif request_type == "members":
             number = data["memberCount"]
