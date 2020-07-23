@@ -1,6 +1,5 @@
 # Setup logging module
 import logging
-logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:%(levelname)s:%(message)s')
 
 def parse(request_type, data):
     try:
