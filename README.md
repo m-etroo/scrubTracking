@@ -9,7 +9,7 @@ Simply add or replace the values after the equals sign.
 * `visits_webhook`, `members_webhook`, `playing_webhook`: Discord webhook URLs to send requests to when logging game and group statistics. You can use three separate webhooks or the same one, but if you use the same one then all stats will be posted in the same channel.
 * `time_format`: Time format string for Python's time formatting. Defaults to ISO 8601.
 * `mention_role_id`: Discord role id of the role to mention for milestone announcements. Leave blank if not using milestone announcements. You can copy the role id by right clicking on the role in the mini profile and selecting "Copy ID".
-* `visits_milestone_freq`, `members_milestone_frequency`: The milestone frequency for visits and members, respectively. In other words, a milestone will be triggered every x visits/members (starting from 0). So, if the frequency is set to 1,000, for example, a milestone will be triggered at 1,000, 2,000, 3,000, etc.
+* `visits_milestone_freq`, `members_milestone_frequency`: The milestone frequency for visits and members, respectively. In other words, a milestone will be triggered every x visits/members (starting from 0). So, if the frequency is set to 1,000, for example, a milestone will be triggered at 1,000, 2,000, 3,000, etc. These default to one million and one thousand, respectively.
 * `interval`: The time to wait in between tracker requests. So, stats will be posted every x seconds.
 ### Setting milestones
 To receive milestone mentions on Discord, you will need to specify milestones to mention for. This is done in the `visits_milestones.txt` and `members_milestones.txt` files.
