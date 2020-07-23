@@ -23,10 +23,12 @@ MEMBERS_MILESTONES = open("members_milestones.txt", "r").readlines() # Edit from
 
 # Motivation
 MOTIVATON_UNIVERSE_ID = config["motivation"]["game_universe_id"]
+MOTIVATION_INFORMAL_NAME = config["motivation"]["game_informal_name"]
+MOTIVATIONAL_MESSAGES = open("motivation_messages.txt", "r").readlines()
 if MOTIVATON_UNIVERSE_ID != "":
-    MOTIVATION_ENABLED = False
-else:
     MOTIVATION_ENABLED = True
+else:
+    MOTIVATION_ENABLED = False
 
 # Countdown frequency
 COUNTDOWN_FREQUENCY = {
