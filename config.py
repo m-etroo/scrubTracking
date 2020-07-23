@@ -1,59 +1,29 @@
-# Roblox game information
-GAME_UNIVERSE_ID = 300039023 # Universe id of game to track
-GAME_REQUEST_URL = f'https://games.roblox.com/v1/games?universeIds={GAME_UNIVERSE_ID}'
+import configparser
+config = configparser.RawConfigParser()
+config.read("config.cfg")
 
-# Roblox group information
-GROUP_ID = 3620943 # Group id of group to track
-MEMBERS_REQUEST_URL = f'https://groups.roblox.com/v1/groups/{GROUP_ID}'
+# Roblox game
+GAME_UNIVERSE_ID = config["game"]["game_universe_id"]
 
-# Webhook info
-DISCORD_WEBHOOKS = { # Dictionary of webhooks to send requests to
-    "visits": "", # Visits webhook
-    "members": "", # Members webhook
-    "playing": "" # Playing webhook
+# Roblox group
+GROUP_ID = config["group"]["group_id"]
+
+# Discord webhook
+DISCORD_WEBHOOKS = {
+    "visits": config["webhook"]["visits_webhook"],
+    "members": config["webhook"]["members_webhook"],
+    "playing": config["webhook"]["playing_webhook"]
 }
-MENTION_ROLE_ID = 999999999999999999 # Role id of role to mention for milestones
+TIME_FORMAT = config["webhook"]["time_format"]
+
+# Milestones
+MENTION_ROLE_ID = config["milestones"]["mention_role_id"]
 VISITS_MILESTONES = open("visits_milestones.txt", "r").readlines() # Edit from visits_milestones.txt
 MEMBERS_MILESTONES = open("members_milestones.txt", "r").readlines() # Edit from members_milestones.txt
 
-TIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ" # Time format for tracker time on Discord
-VISITS_COUNTDOWN = 1000000 # Milestone frequency (count down to every x number of visits)
-MEMBERS_COUNTDOWN = 10000 # Milestone frequency (count down to every x number of members)
+# Countdown frequency
+VISITS_COUNTDOWN = int(config["countdowns"]["visits_milestone_freq"])
+MEMBERS_COUNTDOWN = int(config["countdowns"]["members_milestone_freq"])
 
 # Other
-INTERVAL = 60 # Number of seconds between tracking requests
-
-
-
-
-
-
-# ==================================================================================================
-# Do not modify below here
-# ==================================================================================================
-def remove_milestone(ms_type, milestone):
-    if ms_type == "visits":
-        VISITS_MILESTONES.remove(milestone) # Removes from current session list
-
-        # Removes for future runs of the script
-        milestones = open("visits_milestones.txt", "r").readlines()
-        new_text = []
-        for line in milestones:
-            if milestone not in line:
-                new_text.append(milestone)
-        
-        milestones = open("visits_milestones.txt", "w")
-        milestones.writelines(new_text)
-
-    elif ms_type == "members":
-        MEMBERS_MILESTONES.remove(milestone) # Removes from current session list
-        
-        # Removes for future runs of the script
-        milestones = open("members_milestones.txt", "r").readlines()
-        new_text = []
-        for line in milestones:
-            if milestone not in line:
-                new_text.append(milestone)
-        
-        milestones = open("members_milestones.txt", "w")
-        milestones.writelines(new_text)
+INTERVAL = int(config["time"]["interval"])

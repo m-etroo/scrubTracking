@@ -3,7 +3,8 @@ import logging
 logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:%(levelname)s:%(message)s')
 
 # Import other modules
-import config, prev
+import config
+from handlers import api_urls, milestones, prev
 import requests
 import time
 from math import ceil
@@ -14,7 +15,7 @@ def track_visits():
     mention = "" # No mention triggered YET
 
     # Get data from Roblox API
-    roblox_request = requests.get(config.GAME_REQUEST_URL)
+    roblox_request = requests.get(api_urls.game_url())
 
     # Get approximate time of request
     request_time = time.gmtime()
@@ -47,7 +48,7 @@ def track_visits():
         for milestone in config.VISITS_MILESTONES:
             if visits >= int(milestone):
                 mention = f"\n<@&{config.MENTION_ROLE_ID}>"
-                config.remove_milestone("visits", milestone)
+                milestones.remove_milestone("visits", milestone)
 
         # Format request data to Discord
         l = prev.since_last["visits"]

@@ -4,13 +4,14 @@ logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:
 
 # Import other modules
 import config
+from handlers import api_urls
 import requests
 import time
 
 # Define main tracking function
 def track_players():
     # Get data from Roblox API
-    roblox_request = requests.get(config.GAME_REQUEST_URL)
+    roblox_request = requests.get(api_urls.game_url())
 
     # Get approximate time of request
     request_time = time.gmtime()
