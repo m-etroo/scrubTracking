@@ -22,10 +22,10 @@ def set_motivation(tracker_visits):
         # Parse request data to get number
         motivation_visits = parse_api.parse("motivation", data)
 
-        times = str(round(motivation_visits / tracker_visits, 4))
+        times = str(round(motivation_visits / tracker_visits, 3))
 
         message = messages[random.randint(0, len(messages)-1)]
-        insert = f"\n\n**{config.MOTIVATION_INFORMAL_NAME}** has **{times}**x the number of visits you have! {message}"
+        insert = f"\n\n**{config.MOTIVATION_INFORMAL_NAME}** has **{times}x** the number of visits you have! {message}"
         return insert
     else:
         return ""
