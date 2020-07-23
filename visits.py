@@ -3,8 +3,8 @@ import logging
 logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:%(levelname)s:%(message)s')
 
 # Import other modules
-import config, prev
-from handlers import api_urls, milestones
+import config
+from handlers import api_urls, milestones, prev
 import requests
 import time
 from math import ceil
