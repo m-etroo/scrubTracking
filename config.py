@@ -1,5 +1,5 @@
 import configparser
-config = configparser.ConfigParser()
+config = configparser.RawConfigParser()
 config.read("config.cfg")
 
 # Roblox game
@@ -22,8 +22,8 @@ VISITS_MILESTONES = open("visits_milestones.txt", "r").readlines() # Edit from v
 MEMBERS_MILESTONES = open("members_milestones.txt", "r").readlines() # Edit from members_milestones.txt
 
 # Countdown frequency
-VISITS_COUNTDOWN = config["countdiwns"]["visits_milestone_freq"]
-MEMBERS_COUNTDOWN = config["countdiwns"]["members_milestone_freq"]
+VISITS_COUNTDOWN = int(config["countdowns"]["visits_milestone_freq"])
+MEMBERS_COUNTDOWN = int(config["countdowns"]["members_milestone_freq"])
 
 # Other
-INTERVAL = config["time"]["interval"]
+INTERVAL = int(config["time"]["interval"])
