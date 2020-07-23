@@ -7,3 +7,7 @@ def url(request_type):
     elif request_type == "members":
         gid = config.GROUP_ID
         return f'https://groups.roblox.com/v1/groups/{gid}'
+
+def motivation_url():
+    uid = config.MOTIVATON_UNIVERSE_ID
+    return f'https://games.roblox.com/v1/games?universeIds={uid}'

@@ -1,11 +1,10 @@
 # Setup logging module
 import logging
-logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:%(levelname)s:%(message)s')
 
 import requests
 from math import ceil
 import config
-from handlers import prev, milestones
+from handlers import prev, milestones, motivation
 
 def send_webhook(request_type, number, time_string):
     mention = ""
@@ -26,6 +25,12 @@ def send_webhook(request_type, number, time_string):
             if number >= int(milestone):
                 mention = f"\n<@&{config.MENTION_ROLE_ID}>"
                 milestones.remove_milestone("visits", milestone)
+
+    # Get motivation insert, but only if visits
+    if request_type == "visits":
+        motivation_insert = motivation.set_motivation(number)
+    else:
+        motivation_insert = ""
     
     # Format request data to Discord
     if request_type == "visits" or request_type == "members":
@@ -38,7 +43,7 @@ def send_webhook(request_type, number, time_string):
         c = ""
         u = "SCR Players Tracker"
     request_json = {
-        "content": f"───────────────────\n**{f'{number:,}'}** game visits{c}{l} | `{time_string}`{mention}",
+        "content": f"───────────────────\n**{f'{number:,}'}** game visits{c}{l} | `{time_string}`{motivation_insert}{mention}",
         "username": u
     }
 
