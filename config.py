@@ -22,8 +22,10 @@ VISITS_MILESTONES = open("visits_milestones.txt", "r").readlines() # Edit from v
 MEMBERS_MILESTONES = open("members_milestones.txt", "r").readlines() # Edit from members_milestones.txt
 
 # Countdown frequency
-VISITS_COUNTDOWN = int(config["countdowns"]["visits_milestone_freq"])
-MEMBERS_COUNTDOWN = int(config["countdowns"]["members_milestone_freq"])
+COUNTDOWN_FREQUENCY = {
+    "visits": int(config["countdowns"]["visits_milestone_freq"]),
+    "members": int(config["countdowns"]["members_milestone_freq"])
+}
 
 # Other
 INTERVAL = int(config["time"]["interval"])

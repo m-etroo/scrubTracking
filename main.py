@@ -2,15 +2,15 @@ import logging
 logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:%(levelname)s:%(message)s')
 
 import time, sys, config
-import visits, members, playing
+import tracker
 
 try:
     while True:
         start = time.time()
 
-        visits.track_visits()
-        members.track_members()
-        playing.track_players()
+        tracker.track("visits")
+        tracker.track("members")
+        tracker.track("playing")
 
         duration = time.time() - start
         time.sleep(config.INTERVAL - duration)
