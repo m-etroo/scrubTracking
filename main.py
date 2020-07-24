@@ -4,8 +4,8 @@ logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:
 import time, sys, config
 import tracker
 
-try:
-    while True:
+while True:
+    try:
         start = time.time()
 
         tracker.track("visits")
@@ -14,7 +14,6 @@ try:
 
         duration = time.time() - start
         time.sleep(config.INTERVAL - duration)
-except ConnectionError:
-    time.sleep(config.INTERVAL)
-finally:
-    logging.critical(f'Critical error: {sys.exc_info()}')
+    except ConnectionError:
+        logging.error(f'Error: {sys.exc_info()}')
+        time.sleep(config.INTERVAL)
