@@ -3,7 +3,7 @@ logging.basicConfig(filename='countdown.log', filemode='w', format='%(asctime)s:
 
 import os, config
 import time, sys, config
-import visits, members, playing
+import tracker
 
 try:
     #Setting up webhook urls
@@ -14,10 +14,10 @@ try:
     }
     #Actual test
     start = time.time()
-    
-    visits.track_visits()
-    members.track_members()
-    playing.track_players()
+
+    tracker.track("visits")
+    tracker.track("members")
+    tracker.track("playing")
 
     duration = time.time() - start
 finally:

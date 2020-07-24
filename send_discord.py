@@ -36,14 +36,21 @@ def send_webhook(request_type, number, time_string):
     if request_type == "visits" or request_type == "members":
         l = f' | **{prev.since_last[request_type]}** {request_type} since last count'
         r = f'{countdown_goal - number:,}'
-        c = f' | **{r}** visits remaining'
         u = f"{f'{countdown_goal:,}'} {request_type.capitalize()} Countdown"
+        
+        if request_type == "visits":
+            s = "game visits"
+            c = f' | **{r}** visits remaining'
+        else:
+            c = f' | **{r}** members remaining'
+            s = "group members"
     else:
         l = ""
         c = ""
         u = "SCR Players Tracker"
+        s = "players"
     request_json = {
-        "content": f"───────────────────\n**{f'{number:,}'}** game visits{c}{l} | `{time_string}`{motivation_insert}{mention}",
+        "content": f"───────────────────\n**{f'{number:,}'}** {s}{c}{l} | `{time_string}`{motivation_insert}{mention}",
         "username": u
     }
 
