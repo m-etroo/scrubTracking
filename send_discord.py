@@ -53,8 +53,11 @@ def send_webhook(request_type, number, time_string):
     }
 
     # Send request to Discord webhook
-    request = requests.post(config.DISCORD_WEBHOOKS[request_type], json=request_json)
-
+    try:
+        request = requests.post(config.DISCORD_WEBHOOKS[request_type], json=request_json)
+    except ConnectionError:
+        logging.error(f'Discord API request unsuccessful, likely an API or request issue - {request_type} will not be tracked')
+        return;
     # Check for good request
     if request.status_code == 204:
         logging.info(f'Discord API request successful - {request_type} tracker')

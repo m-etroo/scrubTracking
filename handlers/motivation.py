@@ -9,8 +9,11 @@ messages = config.MOTIVATIONAL_MESSAGES
 def set_motivation(tracker_visits):
     if config.MOTIVATION_ENABLED == True:
         # Get data from Roblox API
-        request = requests.get(api_urls.motivation_url())
-
+        try:
+            request = requests.get(api_urls.motivation_url())
+        except ConnectionError:
+            logging.error(f'Roblox visits API request unsuccessful, likely an API or request issue - motivation will not be tracked')
+            return "";
         # Check for good request
         if request.status_code == 200:
             logging.info(f'Roblox visits API request successful (motivation)') # Log
