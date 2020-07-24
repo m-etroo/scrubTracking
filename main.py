@@ -14,5 +14,7 @@ try:
 
         duration = time.time() - start
         time.sleep(config.INTERVAL - duration)
+except ConnectionError:
+    time.sleep(config.INTERVAL)
 finally:
     logging.critical(f'Critical error: {sys.exc_info()}')
