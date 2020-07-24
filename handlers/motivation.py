@@ -8,10 +8,6 @@ messages = config.MOTIVATIONAL_MESSAGES
 
 def set_motivation(tracker_visits):
     if config.MOTIVATION_ENABLED == True:
-        # Check if there are any messages
-        if len(messages) == 0:
-            return ""
-
         # Get data from Roblox API
         request = requests.get(api_urls.motivation_url())
 
