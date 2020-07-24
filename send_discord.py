@@ -40,7 +40,7 @@ def send_webhook(request_type, number, time_string):
     }
     if request_type == "visits" or request_type == "members":
         last = f' | **{prev.since_last[request_type]}** {request_type} since last count'
-        countdown = f'**{countdown_goal - number:,}** {request_type} remaining'
+        countdown = f' | **{countdown_goal - number:,}** {request_type} remaining'
         name = f"{f'{countdown_goal:,}'} {request_type.capitalize()} Countdown"
     else:
         last = ""
