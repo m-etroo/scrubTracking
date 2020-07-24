@@ -33,18 +33,23 @@ def send_webhook(request_type, number, time_string):
         motivation_insert = ""
     
     # Format request data to Discord
+    description = {
+        "visits": "game visits",
+        "members": "group members",
+        "playing": "current players"
+    }
     if request_type == "visits" or request_type == "members":
-        l = f' | **{prev.since_last[request_type]}** {request_type} since last count'
-        r = f'{countdown_goal - number:,}'
-        c = f' | **{r}** visits remaining'
-        u = f"{f'{countdown_goal:,}'} {request_type.capitalize()} Countdown"
+        last = f' | **{prev.since_last[request_type]}** {request_type} since last count'
+        countdown = f'{countdown_goal - number:,}'
+        name = f"{f'{countdown_goal:,}'} {request_type.capitalize()} Countdown"
     else:
-        l = ""
-        c = ""
-        u = "SCR Players Tracker"
+        last = ""
+        countdown = ""
+        name = "SCR Players Tracker"
+
     request_json = {
-        "content": f"───────────────────\n**{f'{number:,}'}** game visits{c}{l} | `{time_string}`{motivation_insert}{mention}",
-        "username": u
+        "content": f"───────────────────\n**{f'{number:,}'}** {description[request_type]}{countdown}{last} | `{time_string}`{motivation_insert}{mention}",
+        "username": name
     }
 
     # Send request to Discord webhook

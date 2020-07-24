@@ -18,7 +18,7 @@ def set_motivation(tracker_visits):
         else:
             logging.error(f'Roblox visits API request unsuccessful, likely an API or request issue - motivation will not be tracked')
             return ""
-        
+
         # Parse request data to get number
         motivation_visits = parse_api.parse("motivation", data)
 
